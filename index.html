@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="CCM | Creative Content Marketing - وكالة تسويق إبداعية متكاملة">
+    <title>CCM | Creative Content Marketing</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts - Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #ffffff;
+            color: #0f172a;
+            overflow-x: hidden;
+            line-height: 1.55;
+        }
+
+        :root {
+            --brand-gold: #f5c518;
+            --brand-yellow: #f4eb16;
+            --brand-dark: #0a0f1c;
+            --brand-navy: #0f172a;
+            --gray-bg: #f9fafc;
+            --card-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.08);
+            --hover-shadow: 0 30px 45px -15px rgba(0, 0, 0, 0.12);
+            --transition-smooth: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        /* scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--brand-yellow);
+            border-radius: 10px;
+        }
+
+        /* navbar premium */
+        .navbar {
+            background: rgba(244, 235, 22, 0.98);
+            backdrop-filter: blur(2px);
+            padding: 0.85rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+            transition: 0.2s;
+        }
+
+        .navbar-logo {
+            height: 52px;
+            width: auto;
+            border-radius: 20px;
+            transition: transform 0.2s;
+        }
+        .navbar-logo:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links li {
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            transition: var(--transition-smooth);
+            color: #0f172a;
+            border-bottom: 2px solid transparent;
+            letter-spacing: -0.2px;
+        }
+
+        .nav-links li:hover {
+            color: #2c2b0b;
+            border-bottom-color: #2c2b0b;
+            transform: translateY(-2px);
+        }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 4rem 6% 5rem;
+            gap: 3rem;
+            background: linear-gradient(145deg, #ffffff 0%, #fffcf0 100%);
+        }
+
+        .hero-text {
+            flex: 1.5;
+        }
+
+        .main-logo {
+            max-width: 260px;
+            width: 100%;
+            margin-bottom: 1.2rem;
+            border-radius: 2rem;
+            filter: drop-shadow(0 8px 14px rgba(0,0,0,0.05));
+        }
+
+        .hero-slogan {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0f172a, #b8860b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin: 1rem 0 0.75rem;
+            line-height: 1.3;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #334155;
+            border-right: 4px solid var(--brand-yellow);
+            padding-right: 1.25rem;
+            font-weight: 500;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 3rem;
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.2);
+            transition: var(--transition-smooth);
+        }
+        .hero-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: var(--transition-smooth);
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-card {
+            background: #ffffff;
+            margin: 2.8rem 6%;
+            padding: 3rem 2.8rem;
+            border-radius: 3rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(244, 235, 22, 0.25);
+            transition: var(--transition-smooth);
+        }
+        .section-card:hover {
+            box-shadow: var(--hover-shadow);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            border-right: 8px solid var(--brand-yellow);
+            padding-right: 1.2rem;
+            color: #0a0f1c;
+            display: inline-block;
+        }
+
+        /* services grid modern */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-item {
+            background: var(--gray-bg);
+            border-radius: 2rem;
+            padding: 1.8rem 1.2rem;
+            text-align: center;
+            transition: var(--transition-smooth);
+            border: 1px solid #eff3f6;
+            backdrop-filter: blur(2px);
+        }
+        .service-item i {
+            font-size: 2.6rem;
+            color: var(--brand-dark);
+            background: white;
+            padding: 14px;
+            border-radius: 60px;
+            margin-bottom: 1rem;
+            display: inline-block;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+            transition: 0.2s;
+        }
+        .service-item h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 0.6rem;
+        }
+        .service-item p {
+            color: #475569;
+        }
+        .service-item:hover {
+            transform: translateY(-8px);
+            background: #ffffff;
+            border-color: var(--brand-yellow);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+        }
+        .service-item:hover i {
+            background: var(--brand-yellow);
+            color: #0f172a;
+        }
+
+        /* special badges */
+        .service-item.special-graphic i, .service-item.special-seo i {
+            background: linear-gradient(145deg, #fff9e0, #ffffff);
+            border: 1px solid #f4eb16;
+        }
+
+        /* two-crowns */
+        .two-crowns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1.8rem;
+        }
+        .crown-card {
+            flex: 1;
+            min-width: 270px;
+            background: linear-gradient(135deg, #ffffff, #fffef7);
+            border-radius: 3rem;
+            padding: 2rem 1.8rem;
+            text-align: center;
+            border: 1px solid rgba(244,235,22,0.5);
+            transition: var(--transition-smooth);
+        }
+        .crown-card img {
+            max-width: 140px;
+            max-height: 110px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+        .crown-card h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+        .crown-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--brand-yellow);
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.1);
+        }
+
+        /* companies grid premium */
+        .companies-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.3rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.8rem;
+        }
+        .company-logo-card {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1rem;
+            width: 140px;
+            text-align: center;
+            border: 1px solid #eef2f0;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .company-logo-card img {
+            max-width: 80px;
+            max-height: 70px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.02));
+        }
+        .company-logo-card p {
+            font-weight: 700;
+            font-size: 0.75rem;
+            margin-top: 10px;
+            color: #1e293b;
+        }
+        .company-logo-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--brand-yellow);
+            box-shadow: 0 14px 20px -8px rgba(0,0,0,0.08);
+        }
+
+        /* buttons */
+        .btn-join, .signup-btn {
+            background: var(--brand-yellow);
+            border: none;
+            padding: 1rem 2.6rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            color: #0f172a;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+        }
+        .btn-join:hover, .signup-btn:hover {
+            background: #e3d60a;
+            transform: scale(1.02);
+            box-shadow: 0 12px 24px -10px rgba(0,0,0,0.15);
+        }
+
+        /* contact modern */
+        .contact-modern-box {
+            background: linear-gradient(125deg, #fffef9, #ffffff);
+            border-radius: 3.5rem;
+            padding: 3rem 2rem;
+            margin: 3rem 6%;
+            text-align: center;
+            border: 1px solid rgba(244,235,22,0.5);
+            box-shadow: var(--card-shadow);
+        }
+        .contact-icons-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+        .contact-card {
+            background: #ffffff;
+            border-radius: 3rem;
+            padding: 1rem 1.8rem;
+            min-width: 140px;
+            text-decoration: none;
+            color: #0f172a;
+            border: 1px solid #e9edf0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-smooth);
+            font-weight: 600;
+        }
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--brand-yellow);
+            transition: 0.2s;
+        }
+        .contact-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--brand-yellow);
+            background: #fffef5;
+            color: #b8860b;
+        }
+
+        footer {
+            background: #0a0f1c;
+            color: #cbd5e6;
+            padding: 2rem;
+            text-align: center;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* popup modals */
+        .page-about {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 15, 28, 0.96);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+        .about-content {
+            background: white;
+            max-width: 880px;
+            margin: 2rem;
+            padding: 2.5rem 2rem;
+            border-radius: 3rem;
+            position: relative;
+            box-shadow: 0 40px 60px -20px rgba(0,0,0,0.4);
+        }
+        .close-about {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: var(--brand-yellow);
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 60px;
+            transition: 0.2s;
+        }
+        .close-about:hover {
+            background: #d4c70e;
+            transform: scale(0.96);
+        }
+
+        /* form styles */
+        .form-wa {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .form-group {
+            flex: 1;
+            min-width: 160px;
+        }
+        label {
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            display: block;
+            color: #1e293b;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 2rem;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            font-family: 'Cairo', sans-serif;
+            transition: 0.2s;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--brand-yellow);
+            box-shadow: 0 0 0 3px rgba(244,235,22,0.2);
+        }
+        .submit-form-wa {
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 3rem;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .submit-form-wa:hover {
+            background: #1da957;
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 0.8rem; padding: 1rem 5%;}
+            .nav-links { gap: 1.2rem; flex-wrap: wrap; justify-content: center;}
+            .hero { flex-direction: column; text-align: center; padding: 2.5rem 5%;}
+            .hero-text { text-align: center;}
+            .section-card { margin: 1.8rem 4%; padding: 2rem 1.5rem;}
+            .section-title { font-size: 1.7rem;}
+            .two-crowns { flex-direction: column; align-items: center;}
+            .contact-card { min-width: 120px; padding: 0.8rem 1rem;}
+        }
+
+        /* extra polish */
+        .badge-glow {
+            background: #f4eb1620;
+            border-radius: 60px;
+            padding: 0.2rem 1rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Shiny navbar -->
+<div class="navbar">
+    <img class="navbar-logo" src="https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(6).png?raw=true" alt="CCM logo">
+    <ul class="nav-links">
+        <li id="homeLink">الرئيسية</li>
+        <li id="servicesLink">خدماتنا</li>
+        <li id="contactLink">تواصل</li>
+        <li id="aboutLink">من نحن</li>
+    </ul>
+</div>
+
+<!-- Hero Section -->
+<div id="mainHome" class="hero">
+    <div class="hero-text">
+        <img class="main-logo" src="https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(6).png?raw=true" alt="CCM">
+        <div class="hero-slogan">أول وكالة تسويق عندها شغف قد الدنيا للملايين</div>
+        <div class="hero-description">Creative Content Marketing | نصنع المحتوى الذي يحرك الأسواق</div>
+        <div style="margin-top: 2rem;">
+            <button class="btn-join" id="heroJoinBtn">ابدأ مشوارك الآن <i class="fas fa-arrow-left"></i></button>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="https://github.com/basheer-49/CCM/blob/main/Untitled%20design%20(22).png?raw=true" alt="Marketing Creative">
+    </div>
+</div>
+
+<div id="scrollContent">
+    <!-- witty callout -->
+    <div class="animate-on-scroll section-card" style="text-align: center; background: #fffef5;">
+        <h2 style="font-size: 2rem; font-weight: 800;">والله و نوَّر الويبسايت <i class="fas fa-smile-wink"></i></h2>
+        <p style="font-size: 1.2rem; font-weight: 500;">كمل تمرير تستحيش .. اعتبر الويب ويبك، وإحنا هنا نصنع الإبداع</p>
+    </div>
+
+    <!-- Services section -->
+    <div class="animate-on-scroll section-card" id="servicesSection">
+        <div class="section-title"><i class="fas fa-crown"></i> خدماتنا الإبداعية</div>
+        <div class="services-grid">
+            <div class="service-item"><i class="fas fa-pen-fancy"></i><h3>تسويق المحتوى</h3><p>استراتيجيات محتوى جذابة تزيد التفاعل</p></div>
+            <div class="service-item"><i class="fas fa-chart-line"></i><h3>تمويل المحتوى</h3><p>خطط تسويقية مدعومة بالتحليلات</p></div>
+            <div class="service-item"><i class="fas fa-video"></i><h3>إنتاج المحتوى الدعائي</h3><p>فيديوهات احترافية تحكي قصتك</p></div>
+            <div class="service-item"><i class="fas fa-camera"></i><h3>التصوير الاحترافي</h3><p>بصمة بصرية لا تُنسى</p></div>
+            <div class="service-item special-graphic"><i class="fas fa-palette"></i><h3>التصميم الجرافيكي</h3><p>هوية بصرية & بوسترات متفردة <i class="fas fa-star-of-life" style="font-size: 0.7rem;"></i></p></div>
+            <div class="service-item"><i class="fas fa-code"></i><h3>تصميم المواقع والتطبيقات</h3><p>تجربة رقمية سلسة وجذابة</p></div>
+            <div class="service-item"><i class="fas fa-print"></i><h3>المطبوعات</h3><p>هوية ورقية متقنة بلمسة عصرية</p></div>
+            <div class="service-item"><i class="fas fa-chart-pie"></i><h3>خدمات دراسة السوق</h3><p>تحليل عميق لتحقيق النجاح</p></div>
+            <div class="service-item"><i class="fas fa-people-arrows"></i><h3>خدمات دراسة المنافسين</h3><p>استباق الخطوات بذكاء تنافسي</p></div>
+            <div class="service-item special-seo"><i class="fas fa-chart-simple"></i><h3>تحسين محركات البحث SEO</h3><p>ظهور متقدم وجذب عضوي <i class="fas fa-ranking-star"></i></p></div>
+        </div>
+    </div>
+
+    <!-- Join button -->
+    <div class="animate-on-scroll" style="text-align: center; margin: 1rem 5% 1.5rem">
+        <button class="btn-join" id="joinNowBtn">انضم الآن <i class="fas fa-arrow-left"></i></button>
+    </div>
+
+    <!-- Two strategic powers -->
+    <div class="animate-on-scroll section-card">
+        <div class="section-title"><i class="fas fa-fire"></i> قيادات استراتيجية</div>
+        <div class="two-crowns">
+            <div class="crown-card">
+                <img src="https://raw.githubusercontent.com/basheer-49/CCM/c4e47c07b37247d2a7548db351c93bc921929ec1/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(3).png" alt="Wrap Offer">
+                <h3>Wrap Offer</h3>
+                <p>حزمة متكاملة من الحلول التسويقية</p>
+            </div>
+            <div class="crown-card">
+                <img src="https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px).png?raw=true" alt="البشير بن محمد أبو عمر">
+                <h3>البشير بن محمد أبو عمر</h3>
+                <p>الشركة الأم - الريادة في التسويق الإبداعي</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Partners & Clients -->
+    <div class="animate-on-scroll section-card">
+        <div class="section-title"><i class="fas fa-handshake"></i> شركاؤنا و عملاؤنا</div>
+        <div class="companies-grid" id="companiesGrid"></div>
+    </div>
+
+    <!-- Final call to action -->
+    <div class="animate-on-scroll section-card" style="text-align: center;">
+        <h2 style="font-size: 2rem; font-weight: 800;">شو بتستنى؟ سجل معنا</h2>
+        <p style="margin: 0.5rem 0 1rem;">كن جزءًا من نجاحاتنا الكبيرة</p>
+        <button id="signupFinalBtn" class="signup-btn" style="margin-top: 0.5rem;">تسجيل الآن <i class="fas fa-user-plus"></i></button>
+    </div>
+
+    <!-- Contact section enhanced -->
+    <div class="contact-modern-box animate-on-scroll" id="contactSection">
+        <h2 style="font-size: 2rem; font-weight: 800;">📢 تواصل معنا بسهولة</h2>
+        <p>فريقنا ينتظرك لبدء رحلة النجاح</p>
+        <div class="contact-icons-grid">
+            <a href="tel:+962781144716" class="contact-card"><i class="fas fa-phone-alt"></i><span>0781144716</span></a>
+            <a href="https://wa.me/962781144716" target="_blank" class="contact-card"><i class="fab fa-whatsapp"></i><span>واتساب</span></a>
+            <a href="https://www.instagram.com/ccm.jor" target="_blank" class="contact-card"><i class="fab fa-instagram"></i><span>انستغرام</span></a>
+            <a href="https://web.facebook.com/profile.php?id=61566348847213" target="_blank" class="contact-card"><i class="fab fa-facebook"></i><span>فيسبوك</span></a>
+            <a href="mailto:BASHEER.WORKED@GMAIL.COM" class="contact-card"><i class="fas fa-envelope"></i><span>البريد</span></a>
+            <a href="https://www.linkedin.com/company/ccm-jo/" target="_blank" class="contact-card"><i class="fab fa-linkedin"></i><span>لينكد إن</span></a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>جميع حقوق النشر محفوظة لـ Basheer & CCM Creative Content Marketing © 2025</p>
+</footer>
+
+<!-- About modal -->
+<div id="aboutPage" class="page-about">
+    <div class="about-content">
+        <div class="close-about" id="closeAboutBtn">✖</div>
+        <img src="https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(6).png?raw=true" style="width: 110px; margin-bottom: 1rem;">
+        <h2 style="color: #b8a900; font-weight: 800;">من نحن - CCM</h2>
+        <p style="margin-top: 1rem;"><strong>شركة رائدة في التسويق الإبداعي، خبرة ممتدة منذ 2019.</strong> يديرها <strong>بشير محمد أبو عمر</strong> وفريق من المبدعين. نؤمن أن كل علامة تجارية تستحق قصة فريدة تبهر جمهورها.</p>
+        <p>نقدم حلولاً تسويقية شاملة: استراتيجيات محتوى، إنتاج فيديو، تصميم جرافيك، تحسين محركات بحث SEO، وبناء هويات رقمية متكاملة. شركاؤنا هم الأفضل في الشرق الأوسط.</p>
+        <div style="margin-top: 1.2rem;"><i class="fas fa-check-circle" style="color: #f4eb16;"></i> أكثر من 100 مشروع ناجح</div>
+    </div>
+</div>
+
+<!-- Join & Cooperation form -->
+<div id="joinFormModal" class="page-about">
+    <div class="about-content" style="max-width: 940px; max-height: 85vh; overflow-y: auto;">
+        <div class="close-about" id="closeJoinForm">✖</div>
+        <h2 style="color: #b8a900;">📋 نموذج طلب التعاون الاحترافي</h2>
+        <p>املأ البيانات بدقة، وسيتم الرد عبر واتساب في أقرب وقت.</p>
+        <div class="form-wa">
+            <div class="form-row">
+                <div class="form-group"><label>الاسم الكامل *</label><input type="text" id="fullName" placeholder="أدخل اسمك الثلاثي"></div>
+                <div class="form-group"><label>المسمى الوظيفي</label><select id="jobTitle"><option>المالك</option><option>المدير العام</option><option>مسؤول تسويق</option><option>أخرى</option></select></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>اسم النشاط التجاري *</label><input id="businessName" placeholder="مثال: شركة الأفق"></div>
+                <div class="form-group"><label>نوع النشاط *</label><input id="businessType" placeholder="مطعم، مقهى، متجر إلكتروني"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>الدولة / المدينة *</label><input id="city" placeholder="عمان، دبي .."></div>
+                <div class="form-group"><label>رقم الهاتف / واتساب *</label><input id="phone" placeholder="+962xxxxxxxx"></div>
+            </div>
+            <div class="form-group"><label>البريد الإلكتروني</label><input id="email" type="email" placeholder="example@domain.com"></div>
+            <div class="form-group"><label>الخدمات التسويقية المطلوبة *</label><input id="servicesInterest" placeholder="مثل: تصميم جرافيك و SEO"></div>
+            <div class="form-row">
+                <div class="form-group"><label>حسابات سوشال ميديا؟</label><select id="hasSocial"><option>نعم</option><option>لا</option></select></div>
+                <div class="form-group"><label>عدد المتابعين التقريبي</label><input id="followersCount" placeholder="مثال: 10k"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>سبق التعاون مع شركة تسويق؟</label><select id="prevWork"><option>نعم</option><option>لا</option></select></div>
+                <div class="form-group"><label>الهدف الرئيسي من التعاون</label><input id="mainGoal" placeholder="زيادة المبيعات، الوعي بالعلامة"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>عمر النشاط التجاري</label><input id="businessAge" placeholder="سنتين، 6 شهور"></div>
+                <div class="form-group"><label>الميزانية التقريبية</label><input id="budget" placeholder="دولار / دينار"></div>
+            </div>
+            <div class="form-group"><label>تفاصيل إضافية</label><textarea rows="2" id="notes" placeholder="أي معلومات تهمنا"></textarea></div>
+            <button class="submit-form-wa" id="sendToWhatsApp"><i class="fab fa-whatsapp"></i> إرسال إلى واتساب</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Companies data as required (full list)
+    const allCompanies = [
+        { name: "Wrap Offer", logo: "https://raw.githubusercontent.com/basheer-49/CCM/c4e47c07b37247d2a7548db351c93bc921929ec1/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(3).png" },
+        { name: "حنون خدمات نقل", logo: "https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(1).png?raw=true" },
+        { name: "دكان بوابة التجارة", logo: "https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(10).png?raw=true" },
+        { name: "AK UNIFORM", logo: "https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(11).png?raw=true" },
+        { name: "قصر عثمان", logo: "https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(12).png?raw=true" },
+        { name: "سقيا الخير", logo: "https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(13).png?raw=true" },
+        { name: "رذاذ العطور", logo: "https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(14).png?raw=true" },
+        { name: "OCEAN برك", logo: "https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(4).png?raw=true" },
+        { name: "PRO PORTAL", logo: "https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(5).png?raw=true" },
+        { name: "خان زمان", logo: "https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(7).png?raw=true" },
+        { name: "حلول الوطن", logo: "https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px)%20(8).png?raw=true" },
+        { name: "الشركة الأم", logo: "https://github.com/basheer-49/CCM/blob/main/%D9%84%D9%8A%D9%86%D9%83%D9%8A%D8%AF%20%D8%A7%D9%86%20%D8%A8%D8%A7%D9%86%D8%B1%20(1080%20x%201080%20px).png?raw=true" }
+    ];
+
+    function displayAllCompanies() {
+        const container = document.getElementById('companiesGrid');
+        if(container) {
+            container.innerHTML = '';
+            allCompanies.forEach(c => {
+                const card = document.createElement('div');
+                card.className = 'company-logo-card';
+                card.innerHTML = `<img src="${c.logo}" alt="${c.name}" loading="lazy"><p>${c.name}</p>`;
+                container.appendChild(card);
+            });
+        }
+    }
+    displayAllCompanies();
+
+    // Intersection Observer
+    const animatedItems = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    animatedItems.forEach(el => observer.observe(el));
+
+    // NAVIGATION
+    document.getElementById('homeLink')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    document.getElementById('servicesLink')?.addEventListener('click', () => document.getElementById('servicesSection')?.scrollIntoView({ behavior: 'smooth' }));
+    document.getElementById('contactLink')?.addEventListener('click', () => document.getElementById('contactSection')?.scrollIntoView({ behavior: 'smooth' }));
+    
+    const aboutPopup = document.getElementById('aboutPage');
+    const joinPopup = document.getElementById('joinFormModal');
+    document.getElementById('aboutLink')?.addEventListener('click', () => aboutPopup.style.display = 'flex');
+    document.getElementById('closeAboutBtn')?.addEventListener('click', () => aboutPopup.style.display = 'none');
+    
+    const openJoin = () => joinPopup.style.display = 'flex';
+    document.getElementById('joinNowBtn')?.addEventListener('click', openJoin);
+    document.getElementById('signupFinalBtn')?.addEventListener('click', openJoin);
+    document.getElementById('heroJoinBtn')?.addEventListener('click', openJoin);
+    document.getElementById('closeJoinForm')?.addEventListener('click', () => joinPopup.style.display = 'none');
+
+    // WhatsApp sender
+    document.getElementById('sendToWhatsApp')?.addEventListener('click', () => {
+        const name = document.getElementById('fullName')?.value || '';
+        const job = document.getElementById('jobTitle')?.value || '';
+        const business = document.getElementById('businessName')?.value || '';
+        const busType = document.getElementById('businessType')?.value || '';
+        const city = document.getElementById('city')?.value || '';
+        const phone = document.getElementById('phone')?.value || '';
+        const email = document.getElementById('email')?.value || '';
+        const services = document.getElementById('servicesInterest')?.value || '';
+        const hasSocial = document.getElementById('hasSocial')?.value || '';
+        const followers = document.getElementById('followersCount')?.value || '';
+        const prev = document.getElementById('prevWork')?.value || '';
+        const goal = document.getElementById('mainGoal')?.value || '';
+        const age = document.getElementById('businessAge')?.value || '';
+        const budget = document.getElementById('budget')?.value || '';
+        const notes = document.getElementById('notes')?.value || '';
+        
+        if (!name || !business || !city || !phone) {
+            alert('⚠️ الرجاء تعبئة الحقول الأساسية: الاسم، النشاط التجاري، المدينة، رقم الهاتف.');
+            return;
+        }
+        const text = `📢 *طلب تعاون CCM*%0A👤 الاسم: ${name}%0A💼 المسمى: ${job}%0A🏢 النشاط: ${business}%0A📂 النوع: ${busType}%0A📍 المكان: ${city}%0A📞 الهاتف: ${phone}%0A📧 البريد: ${email}%0A⭐ الخدمات: ${services}%0A📱 حسابات التواصل: ${hasSocial} - المتابعون: ${followers}%0A📋 سبق التعاون مع مسوقين: ${prev}%0A🎯 الهدف: ${goal}%0A📆 عمر النشاط: ${age}%0A💰 الميزانية: ${budget}%0A📝 ملاحظات: ${notes}`;
+        window.open(`https://wa.me/962781144716?text=${text}`, '_blank');
+        alert('تم فتح محادثة واتساب، يرجى إرسال الرسالة لتأكيد الطلب.');
+        joinPopup.style.display = 'none';
+    });
+
+    // Close popups by clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target === aboutPopup) aboutPopup.style.display = 'none';
+        if (e.target === joinPopup) joinPopup.style.display = 'none';
+    });
+</script>
+</body>
+</html>
